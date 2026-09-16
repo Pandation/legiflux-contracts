@@ -1,0 +1,21 @@
+{
+  "name": "@legiflux/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Contrats partagés (types, DTOs, Commands/Queries, utilitaires purs) entre legiflux (Next.js) et legiflux-api (NestJS), et tout futur frontend qui viendrait taper sur legiflux-api.",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "type": "commonjs"
+}
