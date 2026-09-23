@@ -47,8 +47,21 @@ config des scripts d'install), forcer avec `pnpm rebuild @legiflux/contracts`.
   NestJS, d'un ORM, du DOM. Une fonction qui a besoin d'infrastructure
   n'a rien à faire ici, elle appartient au repo qui l'utilise.
 
-Les dossiers ci-dessus ne contiennent pour l'instant qu'un exemple
-(`dossier.ts`) à remplacer par les premiers contrats réels.
+Contenu actuel : auth (`/auth/*` : session, utilisateur courant, rôles
+self-service, corps de signin/signup/OTP), erreurs métier
+(`DomainErrorResponseDto`), health et procédures (`/procedures/*`).
+
+## Consommation
+
+- **legiflux** : importe les DTOs dans `infrastructure/` (adaptateurs HTTP)
+  et réexporte les rôles self-service depuis `domain/auth/participant-role.ts`.
+- **legiflux-api** : les classes Swagger de `infrastructure/http/` font
+  `implements` des DTOs d'ici, ce qui garantit à la compilation que la
+  réponse réelle respecte le contrat.
+
+Le repo est **public** pour que la CI, Docker et Vercel puissent l'installer
+sans token : n'y mettre que des types et des fonctions pures, jamais de
+secret.
 
 ## Dev local
 

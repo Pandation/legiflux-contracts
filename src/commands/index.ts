@@ -1,1 +1,1 @@
-export * from "./dossier";
+export * from "./auth";

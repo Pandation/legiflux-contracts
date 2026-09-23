@@ -3,6 +3,13 @@
 // doivent tourner identiquement côté navigateur, côté Next.js serveur, et
 // côté NestJS. Si une fonction a besoin d'infrastructure, elle n'a rien à
 // faire ici — elle appartient à `infrastructure/` du repo qui l'utilise.
-export function isTerminalDossierStatus(status: string): boolean {
-  return /termin|cloture|archive/i.test(status);
+import {
+  SELF_SERVICE_PARTICIPANT_ROLES,
+  type SelfServiceParticipantRole,
+} from "../commands/auth";
+
+export function isSelfServiceParticipantRole(
+  value: string,
+): value is SelfServiceParticipantRole {
+  return (SELF_SERVICE_PARTICIPANT_ROLES as readonly string[]).includes(value);
 }
