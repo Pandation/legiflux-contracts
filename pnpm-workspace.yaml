@@ -1,0 +1,8 @@
+# Racine pnpm propre à ce package. Installé comme dépendance Git, ce repo
+# est préparé (script `prepare`) par un `pnpm install` lancé dans un dossier
+# temporaire du store du consommateur. Si ce store vit sous le projet
+# consommateur (cas de Vercel : `.pnpm-store/`), sans ce fichier l'install
+# remonte jusqu'au pnpm-workspace.yaml du consommateur, réinstalle tout le
+# projet au lieu de ce package, et reprépare ce package… en boucle.
+packages:
+  - "."
