@@ -35,7 +35,8 @@ export interface ProcedureSubStepResponseDto {
   id: string;
   order: number;
   type: string;
-  label: string;
+  title: string;
+  description: string;
   status: string;
   document: ProcedureDocumentResponseDto | null;
 }
@@ -45,8 +46,12 @@ export interface ProcedureStepResponseDto {
   order: number;
   title: string;
   description: string;
-  beforeDoneLabel: string;
-  afterDoneLabel: string;
+  /** Où en est la démarche tant que l'étape n'est pas terminée. */
+  actualSituationLabel: string;
+  /** Ce qui est attendu pour faire avancer l'étape. */
+  pendingActionLabel: string;
+  /** Affiché une fois l'étape terminée. */
+  afterCompletedLabel: string;
   status: string;
   subSteps: ProcedureSubStepResponseDto[];
 }
